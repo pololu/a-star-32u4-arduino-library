@@ -7,9 +7,9 @@ To avoid damage or improper operation, if you have shields or
 other electronics connected, make sure they do not use those
 pins in a conflicting way. */
 
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 
-AStar32U4PrimeLCD lcd;
+AStar32U4LCD lcd;
 
 void setup()
 {

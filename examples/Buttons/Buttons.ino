@@ -7,13 +7,13 @@ To avoid damage or improper operation, if you have shields or
 other electronics connected, make sure they do not use those
 pins in a conflicting way. */
 
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 
 // These objects provide access to the A-Star 32U4 Prime's
 // on-board buttons.  We will only use buttonA.
-AStar32U4PrimeButtonA buttonA;
-AStar32U4PrimeButtonB buttonB;
-AStar32U4PrimeButtonC buttonC;
+AStar32U4ButtonA buttonA;
+AStar32U4ButtonB buttonB;
+AStar32U4ButtonC buttonC;
 
 void setup()
 {

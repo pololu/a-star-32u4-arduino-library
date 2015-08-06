@@ -21,13 +21,13 @@ and pin 12. To avoid damage or improper operation, if you have
 shields or other electronics connected, make sure they do not use
 those pins in a conflicting way. */
 
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 
 // These objects provide access to the A-Star 32U4 Prime's
 // on-board buttons:
-AStar32U4PrimeButtonA buttonA;
-AStar32U4PrimeButtonB buttonB;
-AStar32U4PrimeButtonC buttonC;
+AStar32U4ButtonA buttonA;
+AStar32U4ButtonB buttonB;
+AStar32U4ButtonC buttonC;
 
 // We can also define buttons on other pins using the Pushbutton
 // class.  Here we use pin 12: the internal pull-up will be

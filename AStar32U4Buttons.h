@@ -1,6 +1,6 @@
 // Copyright Pololu Corporation.  For more information, see http://www.pololu.com/
 
-/** \file AStar32U4PrimeButtons.h */
+/** \file AStar32U4Buttons.h */
 
 #pragma once
 
@@ -10,38 +10,36 @@
 #include <SPIPause.h>
 #include <util/delay.h>
 
-/*! The pin number for the pin connected to button A on the A-Star 32U4
- *  Prime. */
-#define A_STAR_32U4_PRIME_BUTTON_A 14
+/*! The pin number for the pin connected to button A. */
+#define A_STAR_32U4_BUTTON_A 14
 
-/*! The pin number for the pin connected to button B on the A-Star 32U4 Prime.
+/*! The pin number for the pin connected to button B.
  *  Note that this is not an official Arduino pin number so it cannot be used
  *  with functions like digitalRead, but it can be used with the FastGPIO
  *  library. */
-#define A_STAR_32U4_PRIME_BUTTON_B IO_D5
+#define A_STAR_32U4_BUTTON_B IO_D5
 
-/*! The pin number for the pin connected to button C on the A-Star 32U4
- *  Prime. */
-#define A_STAR_32U4_PRIME_BUTTON_C 17
+/*! The pin number for the pin connected to button C. */
+#define A_STAR_32U4_BUTTON_C 17
 
-/*! \brief Interfaces with button A on the A-Star 32U4 Prime.
+/*! \brief Interfaces with button A.
  *
  * The pin used for button A is also used for reading the DO pin on the microSD
- * card.  If the chip select (CS) pin for the microSD card is low (active), you
- * cannot read button A because the signal from the microSD card will override
- * the signal from the button.  Therefore, the CS pin needs to be high whenever
- * functions in this class are called.  The CS pin is high by default and the
- * Arduino's SD library leaves CS high when the microSD card is not being used,
- * so most users will not need to worry about that. */
-class AStar32U4PrimeButtonA : public Pushbutton
+ * card on the A-Star 32U4 Prime.  If the chip select (CS) pin for the microSD
+ * card is low (active), you cannot read button A because the signal from the
+ * microSD card will override the signal from the button.  Therefore, the CS pin
+ * needs to be high whenever functions in this class are called.  The CS pin is
+ * high by default and the Arduino's SD library leaves CS high when the microSD
+ * card is not being used, so most users will not need to worry about that. */
+class AStar32U4ButtonA : public Pushbutton
 {
 public:
-    AStar32U4PrimeButtonA() : Pushbutton(A_STAR_32U4_PRIME_BUTTON_A)
+    AStar32U4ButtonA() : Pushbutton(A_STAR_32U4_BUTTON_A)
     {
     }
 };
 
-/*! \brief Interfaces with button B on the A-Star 32U4 Prime.
+/*! \brief Interfaces with button B.
  *
  * The pin used for button B is also used for the TX LED.
  *
@@ -51,7 +49,7 @@ public:
  * This class temporarily sets the pin to be an input without a pull-up
  * resistor.  The pull-up resistor is not needed because of the resistors on the
  * board. */
-class AStar32U4PrimeButtonB : public PushbuttonBase
+class AStar32U4ButtonB : public PushbuttonBase
 {
 public:
     virtual bool isPressed()
@@ -59,15 +57,15 @@ public:
         // These objects take care of disabling USB interrupts temporarily
         // and restoring the pin to its previous state at the end.
         USBPause usbPause;
-        FastGPIO::PinLoan<A_STAR_32U4_PRIME_BUTTON_B> loan;
+        FastGPIO::PinLoan<A_STAR_32U4_BUTTON_B> loan;
 
-        FastGPIO::Pin<A_STAR_32U4_PRIME_BUTTON_B>::setInput();
+        FastGPIO::Pin<A_STAR_32U4_BUTTON_B>::setInput();
         _delay_us(3);
-        return !FastGPIO::Pin<A_STAR_32U4_PRIME_BUTTON_B>::isInputHigh();
+        return !FastGPIO::Pin<A_STAR_32U4_BUTTON_B>::isInputHigh();
     }
 };
 
-/*! \brief Interfaces with button C on the A-Star 32U4 Prime.
+/*! \brief Interfaces with button C.
  *
  * The pin used for button C is also used for the RX LED.
  *
@@ -83,17 +81,17 @@ public:
  * resistor.  The pull-up resistor is not needed because of the resistors on the
  * board.
  */
-class AStar32U4PrimeButtonC : public PushbuttonBase
+class AStar32U4ButtonC : public PushbuttonBase
 {
 public:
     virtual bool isPressed()
     {
         SPIPause spiPause;
         USBPause usbPause;
-        FastGPIO::PinLoan<A_STAR_32U4_PRIME_BUTTON_C> loan;
+        FastGPIO::PinLoan<A_STAR_32U4_BUTTON_C> loan;
 
-        FastGPIO::Pin<A_STAR_32U4_PRIME_BUTTON_C>::setInput();
+        FastGPIO::Pin<A_STAR_32U4_BUTTON_C>::setInput();
         _delay_us(3);
-        return !FastGPIO::Pin<A_STAR_32U4_PRIME_BUTTON_C>::isInputHigh();
+        return !FastGPIO::Pin<A_STAR_32U4_BUTTON_C>::isInputHigh();
     }
 };

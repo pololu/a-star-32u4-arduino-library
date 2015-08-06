@@ -1,6 +1,6 @@
 // Copyright Pololu Corporation.  For more information, see http://www.pololu.com/
 
-/*! \file AStar32U4PrimeLCD.h */
+/*! \file AStar32U4LCD.h */
 
 #pragma once
 
@@ -9,7 +9,7 @@
 #include <USBPause.h>
 #include <SPIPause.h>
 
-/*! \brief Main class for interfacing with the A-Star 32U4 Prime LCD.
+/*! \brief Main class for interfacing with the A-Star 32U4 LCD.
  *
  * This class interfaces with an HD44780-compatible LCD connected to the LCD
  * connector on the A-Star 32U4 Prime.
@@ -52,7 +52,7 @@
  * characters can be displayed, see the
  * [HD44780 datasheet](http://www.pololu.com/file/0J72/HD44780.pdf).
  */
-class AStar32U4PrimeLCD : public PololuHD44780Base
+class AStar32U4LCD : public PololuHD44780Base
 {
     // Pin assignments.  Change this if you want to remap your pins.
     static const uint8_t rs = 7, e = 8, db4 = 14, db5 = 17, db6 = 13, db7 = IO_D5;

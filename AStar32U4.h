@@ -1,8 +1,8 @@
 // Copyright Pololu Corporation.  For more information, see http://www.pololu.com/
 
-/*! \file AStar32U4Prime.h
+/*! \file AStar32U4.h
  *
- * This is the main header file for the %AStar32U4Prime library.
+ * This is the main header file for the %AStar32U4 library.
  * It includes all the other header files provided by the library.
  */
 
@@ -10,9 +10,9 @@
 
 #include <FastGPIO.h>
 #include <Pushbutton.h>
-#include <AStar32U4PrimeLCD.h>
-#include <AStar32U4PrimeBuzzer.h>
-#include <AStar32U4PrimeButtons.h>
+#include <AStar32U4LCD.h>
+#include <AStar32U4Buzzer.h>
+#include <AStar32U4Buttons.h>
 #include <avr/io.h>
 #include <stdint.h>
 

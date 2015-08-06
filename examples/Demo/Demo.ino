@@ -52,15 +52,15 @@ blue board).  If not, then comment out the line below. */
 // This demo drives pin 4 low whenver the SD card is being used.
 const uint8_t chipSelect = 4;
 
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 #include <SPI.h>
 #include <SD.h>
 
-AStar32U4PrimeLCD lcd;
-AStar32U4PrimeBuzzer buzzer;
-AStar32U4PrimeButtonA buttonA;
-AStar32U4PrimeButtonB buttonB;
-AStar32U4PrimeButtonC buttonC;
+AStar32U4LCD lcd;
+AStar32U4Buzzer buzzer;
+AStar32U4ButtonA buttonA;
+AStar32U4ButtonB buttonB;
+AStar32U4ButtonC buttonC;
 
 class Menu
 {

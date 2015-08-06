@@ -1,7 +1,7 @@
 /* This example shows how to blink the three user LEDs
-on the A-Star 32U4 Prime. */
+on the A-Star 32U4. */
 
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 
 void setup()
 {

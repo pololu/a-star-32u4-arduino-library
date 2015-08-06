@@ -1,4 +1,4 @@
-/* This example uses the AStar32U4PrimeBuzzer class to play a
+/* This example uses the AStar32U4Buzzer class to play a
 series of notes on the buzzer.
 
 This example demonstrates the use of the playFrequency(),
@@ -21,9 +21,9 @@ damage or improper operation, if you have shields or other
 electronics connected, make sure they do not use that pin in a
 conflicting way. */
 
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 
-AStar32U4PrimeBuzzer buzzer;
+AStar32U4Buzzer buzzer;
 
 // Store this song in program space using the PROGMEM macro.
 // Later we will play it directly from program space, bypassing
