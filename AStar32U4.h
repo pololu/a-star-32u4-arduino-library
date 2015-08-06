@@ -13,6 +13,7 @@
 #include <AStar32U4LCD.h>
 #include <AStar32U4Buzzer.h>
 #include <AStar32U4Buttons.h>
+#include <AStar32U4Motors.h>
 #include <avr/io.h>
 #include <stdint.h>
 
