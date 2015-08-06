@@ -74,7 +74,8 @@ You should avoid adding extra `#include` lines such as `#include <Pushbutton.h>`
 
 ## Documentation
 
-For complete documentation, see https://pololu.github.io/a-star-32u4.  If you are already on that page, then click on the links in the "Classes and functions" section above.
+For complete documentation, see
+https://pololu.github.io/a-star-32u4-arduino-library.  If you are already on that page, then click on the links in the "Classes and functions" section above.
 
 ## Version history
 
