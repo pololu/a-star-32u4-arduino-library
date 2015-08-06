@@ -1,40 +1,52 @@
-# AStar32U4Prime library
+# AStar32U4 library
 
-Version: 1.1.2<br/>
-Release date: 2015 May 06<br/>
+Version: 1.0.0<br/>
+Release date: 2015 August 06<br/>
 [www.pololu.com](http://www.pololu.com/)
 
 ## Summary
 
-This is a C++ library for the Arduino IDE that helps access the on-board hardware of the [A-Star 32U4 Prime](http://www.pololu.com/category/165/a-star-32u4-prime), which is a family of programmable controllers from Pololu based on the ATmega32U4.  You can program the A-Star 32U4 Prime directly from the Arduino IDE without using this library, but this library makes it easy to:
+This is a C++ library for the Arduino IDE that helps access the on-board hardware of the [A-Star 32U4 controllers](http://www.pololu.com/category/149), which is a family of programmable controllers from Pololu based on the ATmega32U4. You can program an A-Star 32U4 directly from the Arduino IDE without using this library, but this library makes it easy to:
 
 * display information on the LCD
 * play sounds and music on the buzzer
 * read the battery voltage level
 * control the three user LEDs
 * use the three user pushbuttons
+* use the on-board motor drivers
+
+(Not all of these features are available on every A-Star 32U4. For more information about each particular A-Star controller, please refer to their documentation and respective product pages.)
 
 ## Installing the library
 
-You can download this library from the [Pololu A-Star 32U4 User's Guide](http://www.pololu.com/docs/0J61) or from the [a-star repository on GitHub](https://github.com/pololu/a-star).  Extract the files from the downloaded ZIP file and find the "AStar32U4Prime" directory, which is inside the "libraries" folder.  Copy the "AStar32U4Prime" folder into the "libraries" subdirectory inside your Arduino sketchbook directory.  You can see the sketchbook location in the Arduino IDE Preferences dialog, which is available from the File menu.  For a typical user, the sketchbook location will be a folder named Arduino inside the Documents folder.  For a typical user running a recent version of Windows, the "AStar32U4Prime" folder should be installed in this location:
+If you are using version 1.6.2 or later of the [Arduino software (IDE)](http://www.arduino.cc/en/Main/Software), you can use the Library Manager to install this library:
 
-`C:\Users\<username>\Documents\Arduino\libraries\AStar32U4Prime`
+1. In the Arduino IDE, open the "Sketch" menu, select "Include Library", then "Manage Libraries...".
+2. Search for "AStar32U4".
+3. Click the AStar32U4 entry in the list.
+4. Click "Install".
 
-After installing the library, restart the Arduino IDE.
+If this does not work, you can manually install the library:
+
+1. Download the [latest release archive from GitHub](https://github.com/pololu/a-star-32u4-arduino-library) and decompress it.
+2. Rename the folder "a-star-32u4-arduino-library" to "AStar32U4".
+3. Move the "AStar32U4" folder into the "libraries" directory inside your Arduino sketchbook directory.  You can view your sketchbook location by opening the "File" menu and selecting "Preferences" in the Arduino IDE.  If there is not already a "libraries" folder in that location, you should make the folder yourself.
+4. After installing the library, restart the Arduino IDE.
 
 ## Examples
 
-Several example sketches are available that show how to use the library.  You can access them from the Arduino IDE by opening the "File" menu, selecting "Examples", and then selecting "AStar32U4Prime".  If you cannot find these examples, the library was probably installed incorrectly and you should retry the installation instructions above.
+Several example sketches are available that show how to use the library.  You can access them from the Arduino IDE by opening the "File" menu, selecting "Examples", and then selecting "AStar32U4".  If you cannot find these examples, the library was probably installed incorrectly and you should retry the installation instructions above.
 
 ## Classes and functions
 
 The main classes and functions provided by the library are listed below:
 
-* AStar32U4PrimeButtonA
-* AStar32U4PrimeButtonB
-* AStar32U4PrimeButtonC
-* AStar32U4PrimeBuzzer
-* AStar32U4PrimeLCD
+* AStar32U4ButtonA
+* AStar32U4ButtonB
+* AStar32U4ButtonC
+* AStar32U4Buzzer
+* AStar32U4LCD
+* AStar32U4Motors
 * ledGreen()
 * ledRed()
 * ledYellow()
@@ -54,19 +66,16 @@ This library also includes copies of several other Arduino libraries inside it w
 
 The Pushbutton and FastGPIO libraries are generally useful and you might want to use them directly in your sketch.  You can use these libraries automatically without any extra installation steps and without needing to add any extra `#include` lines to your sketch.
 
-You should avoid adding extra `#include` lines such as `#include <Pushbutton.h>` because then the Arduino IDE might try to use the standalone %Pushbutton library (if you previously installed it), and it would conflict with the copy of the Pushbutton code included in the AStar32U4Prime library.  The only `#include` line needed to access all features of this library is:
+You should avoid adding extra `#include` lines such as `#include <Pushbutton.h>` because then the Arduino IDE might try to use the standalone %Pushbutton library (if you previously installed it), and it would conflict with the copy of the Pushbutton code included in the AStar32U4 library.  The only `#include` line needed to access all features of this library is:
 
 ~~~{.cpp}
-#include <AStar32U4Prime.h>
+#include <AStar32U4.h>
 ~~~
 
 ## Documentation
 
-For complete documentation, see https://pololu.github.io/a-star-32u4-prime.  If you are already on that page, then click on the links in the "Classes and functions" section above.
+For complete documentation, see https://pololu.github.io/a-star-32u4.  If you are already on that page, then click on the links in the "Classes and functions" section above.
 
 ## Version history
 
-* 1.1.2 (2015 May 06): Updated FastGPIO to version 1.0.2.
-* 1.1.1 (2015 Jan 06): Update to version 1.0.1 of the FastGPIO library, which has a minor change to fix some compiler warnings.
-* 1.1.0 (2014 Dec 31): Added support for the A-Star 32U4 Prime SV.
-* 1.0.0 (2014 Dec 11): Original release.
+* 1.0.0 (2015 Aug 06): Original release, adapted from version 1.1.2 of AStar32U4Prime library in a-star repository.
