@@ -1,6 +1,6 @@
 
 # Doxygen configuration file for generating documentation.
-PROJECT_NAME = "AStar32U4Prime library"
+PROJECT_NAME = "AStar32U4 library"
 OUTPUT_DIRECTORY = docs
 INLINE_INHERITED_MEMB = YES
 INPUT = .
