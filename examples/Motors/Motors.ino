@@ -10,8 +10,8 @@ AStar32U4Motors motors;
 void setup()
 {
   // Uncomment to flip a motor's direction:
-  //motors.flipLeftMotor(true);
-  //motors.flipRightMotor(true);
+  //motors.flipM1(true);
+  //motors.flipM2(true);
 }
 
 void loop()
