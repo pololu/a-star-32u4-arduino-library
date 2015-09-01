@@ -1,7 +1,7 @@
-/* This example drives each motor connected to the A-Star 32U4
-Robot Controller forward, then backward.  The yellow user LED is
-on when a motor is set to a positive speed and off when a motor is
-set to a negative speed. */
+/* This example drives each motor connected to the A-Star
+32U4 Robot Controller forward, then backward.  The yellow
+user LED is on when a motor is set to a positive speed and
+off when a motor is set to a negative speed. */
 
 #include <AStar32U4.h>
 

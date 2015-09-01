@@ -1,55 +1,58 @@
 /* This demo program shows many features of the
 A-Star 32U4 Prime.
 
-It uses the buttons, LCD, and buzzer to provide a user interface.
-It presents a menu to the user that lets the user select from
-several different demos.
+It uses the buttons, LCD, and buzzer to provide a user
+interface.  It presents a menu to the user that lets the
+user select from several different demos.
 
-To use this demo program, you will need to have an LCD connected
-to the A-Star 32U4 Prime.  If you cannot see any text on the LCD,
-try rotating the contrast potentiometer.
+To use this demo program, you will need to have an LCD
+connected to the A-Star 32U4 Prime.  If you cannot see any
+text on the LCD, try rotating the contrast potentiometer.
 
-Note: This demo uses the standard A-Star 32U4 Prime LCD pins,
-buzzer pin, button pins, microSD pins, and pin 4. To avoid damage
-or improper operation, if you have shields or other electronics
-connected, make sure they do not use those pins in a conflicting
-way.
+Note: This demo uses the standard A-Star 32U4 Prime LCD
+pins, buzzer pin, button pins, microSD pins, and pin 4. To
+avoid damage or improper operation, if you have shields or
+other electronics connected, make sure they do not use those
+pins in a conflicting way.
 
 == microSD card considerations ==
 
-To use the microSD card portion of this program, you will need to
-install a jumper between GND and CS.
+To use the microSD card portion of this program, you will
+need to install a jumper between GND and CS.
 
-(You will also need to have a version of the A-Star 32U4 with a
-microSD card socket and you will need to insert a formatted
-microSD card into the socket.)
+(You will also need to have a version of the A-Star 32U4
+with a microSD card socket and you will need to insert a
+formatted microSD card into the socket.)
 
-Note: While the GND/CS jumper is installed, button A will not
-work.
+Note: While the GND/CS jumper is installed, button A will
+not work.
 
-Note: If the GND/CS jumper is installed and the microSD card is
-not inserted, the state of the DO signal from the microSD card
-will be undefined.  This could waste power and might also cause
-this program to detect spurious presses on button A.
+Note: If the GND/CS jumper is installed and the microSD card
+is not inserted, the state of the DO signal from the microSD
+card will be undefined.  This could waste power and might
+also cause this program to detect spurious presses on button
+A.
 
 To avoid these issues, you can connect CS to pin 4 using a
-male-female jumper wire instead of connecting CS to GND.  This
-demo drives pin 4 low whenever the microSD card is accessed and
-drives it high the rest of the time, allowing button A to work
-properly. */
+male-female jumper wire instead of connecting CS to GND.
+This demo drives pin 4 low whenever the microSD card is
+accessed and drives it high the rest of the time, allowing
+button A to work properly. */
 
 
-/* This demo assumes you are using the A-Star 32U4 Prime LV (the
-blue board).  If not, then comment out the line below. */
+// This demo assumes you are using the A-Star 32U4 Prime LV
+// (the blue board).  If not, then comment out the line
+// below.
 #define A_STAR_LV
 
-// Assume this will run on the A-Star 32U4 Prime SV (the green
-// board) if it is not running on the LV.
+// Assume this will run on the A-Star 32U4 Prime SV (the
+// green board) if it is not running on the LV.
 #ifndef A_STAR_LV
 #define A_STAR_SV
 #endif
 
-// This demo drives pin 4 low whenver the SD card is being used.
+// This demo drives pin 4 low whenver the SD card is being
+// used.
 const uint8_t chipSelect = 4;
 
 #include <AStar32U4.h>
@@ -91,8 +94,8 @@ public:
     items[index].action();
   }
 
-  // Prompts the user to choose one of the menu items,
-  // then runs it, then returns.
+  // Prompts the user to choose one of the menu items, then
+  // runs it, then returns.
   void select()
   {
     lcdUpdate(lcdItemIndex);
@@ -128,7 +131,8 @@ public:
         break;
 
       case 'B':
-        // The B button was pressed so, run the item and return.
+        // The B button was pressed so, run the item and
+        // return.
         action(lcdItemIndex);
         return;
       }
@@ -179,9 +183,9 @@ const char backArrow[] PROGMEM = {
 
 void loadCustomCharacters()
 {
-  // The LCD supports up to 8 custom characters.  Each character
-  // has a number between 0 and 7.  We assign #6 to be the back
-  // arrow, and #7 to be the musical note.
+  // The LCD supports up to 8 custom characters.  Each
+  // character has a number between 0 and 7.  We assign #6
+  // to be the back arrow, and #7 to be the musical note.
   lcd.loadCustomCharacter(backArrow, 6);
   lcd.loadCustomCharacter(note, 7);
 }
@@ -196,9 +200,9 @@ void displayBackArrow()
   lcd.gotoXY(0,0);
 }
 
-// Acts as a two-key keyboard.  You can press button A or button
-// C to send the corresponding keys to the computer.  For more
-// information, see the Keyboard example.
+// Acts as a two-key keyboard.  You can press button A or
+// button C to send the corresponding keys to the computer.
+// For more information, see the Keyboard example.
 void keyboardDemo()
 {
   displayBackArrow();
@@ -339,8 +343,8 @@ void musicDemo()
   }
 }
 
-// Display the the battery (VIN) voltage and indicate whether USB
-// power is detected.
+// Display the the battery (VIN) voltage and indicate
+// whether USB power is detected.
 void powerDemo()
 {
   uint16_t lastDisplayTime = millis() - 2000;
@@ -372,8 +376,8 @@ void powerDemo()
 Sd2Card card;
 SdVolume volume;
 
-// Displays the size of the main partition on the inserted SD
-// card.  If this doesn't work, see the notes at the top.
+// Displays the size of the main partition on the inserted
+// SD card.  If this doesn't work, see the notes at the top.
 void sdDemo()
 {
   lcd.clear();
@@ -397,10 +401,10 @@ void sdDemo()
     }
     else
     {
-      // We multiply the number of clusters times the number of
-      // blocks in a cluster to get the number of blocks.  Each
-      // block is 512 bytes and there are 1024*1024 bytes in a
-      // megabyte.
+      // We multiply the number of clusters times the number
+      // of blocks in a cluster to get the number of blocks.
+      // Each block is 512 bytes and there are 1024*1024
+      // bytes in a megabyte.
       uint32_t size = (uint32_t)volume.clusterCount() *
         volume.blocksPerCluster() * 512 / 1024 / 1024;
       lcd.clear();
@@ -409,16 +413,16 @@ void sdDemo()
     }
   }
 
-  // We are done checking the SD card, so display the back arrow
-  // and wait for the user to press B.
+  // We are done checking the SD card, so display the back
+  // arrow and wait for the user to press B.
   lcd.gotoXY(0, 1);
   lcd.print(F("\6B"));
   while(buttonMonitor() != 'B');
 }
 
-// Receives characters from the serial monitor and prints them on
-// the LCD.  Also sends button press notifications to the serial
-// monitor.
+// Receives characters from the serial monitor and prints
+// them on the LCD.  Also sends button press notifications
+// to the serial monitor.
 void serialMonitorDemo()
 {
   lcd.clear();
@@ -451,15 +455,16 @@ void serialMonitorDemo()
       // Show the character on the LCD.
       if (column >= 8)
       {
-        // The first line has filled up, so reset the display.
+        // The first line has filled up, so reset the
+        // display.
         displayBackArrow();
         column = 0;
       }
       column++;
       lcd.write(c);
 
-      // Write a message back to the serial monitor saying the
-      // hex value of the character received.
+      // Write a message back to the serial monitor saying
+      // the hex value of the character received.
       Serial.print("Received character 0x");
       Serial.println((uint8_t)c, HEX);
     }
@@ -496,10 +501,10 @@ Menu::Item mainMenuItems[] = {
 Menu mainMenu(mainMenuItems, 6);
 
 // This function watches for button presses.  If a button is
-// pressed, it beeps a corresponding beep and it returns 'A',
-// 'B', or 'C' depending on what button was pressed.  If no
-// button was pressed, it returns 0.  This function is meant to
-// be called repeatedly in a loop.
+// pressed, it beeps a corresponding beep and it returns
+// 'A', 'B', or 'C' depending on what button was pressed.
+// If no button was pressed, it returns 0.  This function is
+// meant to be called repeatedly in a loop.
 char buttonMonitor()
 {
   if (buttonA.getSingleDebouncedPress())
@@ -527,25 +532,25 @@ void setup()
 {
   loadCustomCharacters();
 
-  // The brownout threshold on the A-Star 32U4 is 4.3 V.  If VCC
-  // drops below this, a brownout reset will occur, preventing
-  // the AVR from operating out of spec.
+  // The brownout threshold on the A-Star 32U4 is 4.3 V.  If
+  // VCC drops below this, a brownout reset will occur,
+  // preventing the AVR from operating out of spec.
   //
-  // Note: Brownout resets usually do not happen on the A-Star
-  // 32U4 Prime LV because the voltage regulator goes straight
-  // from 5 V to 0 V when VIN drops too low.
+  // Note: Brownout resets usually do not happen on the
+  // A-Star 32U4 Prime LV because the voltage regulator goes
+  // straight from 5 V to 0 V when VIN drops too low.
   //
-  // The bootloader is
-  // designed so that you can detect brownout resets from your
-  // sketch using the following code:
+  // The bootloader is designed so that you can detect
+  // brownout resets from your sketch using the following
+  // code:
   bool brownout = MCUSR >> BORF & 1;
   MCUSR = 0;
 
   if (brownout)
   {
-    // The board was reset by a brownout reset
-    // (VCC dropped below 4.3 V).
-    // Play a special sound and display a note to the user.
+    // The board was reset by a brownout reset (VCC dropped
+    // below 4.3 V).  Play a special sound and display a
+    // note to the user.
 
     buzzer.playFromProgramSpace(beepBrownout);
     lcd.clear();
@@ -599,8 +604,8 @@ void setup()
   delay(1000);
 }
 
-// This function prompts the user to choose something from the
-// main menu, runs their selection, and then returns.
+// This function prompts the user to choose something from
+// the main menu, runs their selection, and then returns.
 void mainMenuSelect()
 {
   lcd.clear();

@@ -1,11 +1,11 @@
-/* This example demonstrates basic use of the A-Star 32U4 Prime
-LCD.  It prints the word "hi" on the first line of the LCD and
-prints the number 1234 on the second line.
+/* This example demonstrates basic use of the A-Star 32U4
+Prime LCD.  It prints the word "hi" on the first line of the
+LCD and prints the number 1234 on the second line.
 
-Note: This demo uses the standard A-Star 32U4 Prime LCD pins.
-To avoid damage or improper operation, if you have shields or
-other electronics connected, make sure they do not use those
-pins in a conflicting way. */
+Note: This demo uses the standard A-Star 32U4 Prime LCD
+pins.  To avoid damage or improper operation, if you have
+shields or other electronics connected, make sure they do
+not use those pins in a conflicting way. */
 
 #include <AStar32U4.h>
 

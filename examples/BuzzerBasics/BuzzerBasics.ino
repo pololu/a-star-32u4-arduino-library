@@ -3,31 +3,32 @@ series of notes on the buzzer.
 
 This example demonstrates the use of the playFrequency(),
 playNote(), and playFromProgramSpace() functions, which play
-entirely in the background, requiring no further action from the
-user once the function is called.  The CPU is then free to
-execute other code while the buzzer plays.
+entirely in the background, requiring no further action from
+the user once the function is called.  The CPU is then free
+to execute other code while the buzzer plays.
 
-This example also shows how to use the stopPlaying() function to
-stop the buzzer, and it shows how to use the isPlaying() function
-to tell whether the buzzer is still playing or not.
+This example also shows how to use the stopPlaying()
+function to stop the buzzer, and it shows how to use the
+isPlaying() function to tell whether the buzzer is still
+playing or not.
 
-For this example to work, you will need to have a buzzer soldered
-into the A-Star, and you will need to install a shorting block
-on the two pins near the buzzer, which will connect pin 6 to the
-buzzer.
+For this example to work, you will need to have a buzzer
+soldered into the A-Star, and you will need to install a
+shorting block on the two pins near the buzzer, which will
+connect pin 6 to the buzzer.
 
 Note: This demo uses pin 6 to control the buzzer. To avoid
 damage or improper operation, if you have shields or other
-electronics connected, make sure they do not use that pin in a
-conflicting way. */
+electronics connected, make sure they do not use that pin in
+a conflicting way. */
 
 #include <AStar32U4.h>
 
 AStar32U4Buzzer buzzer;
 
 // Store this song in program space using the PROGMEM macro.
-// Later we will play it directly from program space, bypassing
-// the need to load it all into RAM first.
+// Later we will play it directly from program space,
+// bypassing the need to load it all into RAM first.
 const char fugue[] PROGMEM =
   "! O5 L16 agafaea dac+adaea fa<aa<bac#a dac#adaea f"
   "O6 dcd<b-d<ad<g d<f+d<gd<ad<b- d<dd<ed<f+d<g d<f+d<gd<ad"
