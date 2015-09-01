@@ -1,7 +1,7 @@
 # AStar32U4 library
 
-Version: 1.0.1<br/>
-Release date: 2015 August 13<br/>
+Version: 1.0.2<br/>
+Release date: 2015 August 31<br/>
 [www.pololu.com](http://www.pololu.com/)
 
 ## Summary
@@ -79,5 +79,6 @@ https://pololu.github.io/a-star-32u4-arduino-library.  If you are already on tha
 
 ## Version history
 
+* 1.0.2 (2015 Aug 31): Renamed Demo example to PrimeDemo and updated comments in examples.
 * 1.0.1 (2015 Aug 13): Corrected commented motor flip code in Motors example.
 * 1.0.0 (2015 Aug 06): Original release, adapted from version 1.1.2 of AStar32U4Prime library in a-star repository.
