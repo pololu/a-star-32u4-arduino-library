@@ -406,7 +406,7 @@ void sdDemo()
       // Each block is 512 bytes and there are 1024*1024
       // bytes in a megabyte.
       uint32_t size = (uint32_t)volume.clusterCount() *
-        volume.blocksPerCluster() * 512 / 1024 / 1024;
+        volume.blocksPerCluster() / 2048;
       lcd.clear();
       lcd.print(size);
       lcd.print(F(" MB"));
