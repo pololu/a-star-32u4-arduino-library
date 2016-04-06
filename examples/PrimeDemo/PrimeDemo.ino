@@ -58,12 +58,15 @@ const uint8_t chipSelect = 4;
 #include <AStar32U4.h>
 #include <SPI.h>
 #include <SD.h>
+#include <Keyboard.h>
 
 AStar32U4LCD lcd;
 AStar32U4Buzzer buzzer;
 AStar32U4ButtonA buttonA;
 AStar32U4ButtonB buttonB;
 AStar32U4ButtonC buttonC;
+
+char buttonMonitor();
 
 class Menu
 {
