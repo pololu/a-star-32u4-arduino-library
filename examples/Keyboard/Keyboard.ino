@@ -24,6 +24,7 @@ avoid damage or improper operation, if you have shields or
 other electronics connected, make sure they do not use those
 pins in a conflicting way. */
 
+#include <Keyboard.h>
 #include <AStar32U4.h>
 
 // These objects provide access to the A-Star's on-board
