@@ -1,7 +1,7 @@
 # AStar32U4 library
 
-Version: 1.0.3<br/>
-Release date: 2015 September 15<br/>
+Version: 1.0.4<br/>
+Release date: 2016 Apr 06<br/>
 [www.pololu.com](http://www.pololu.com/)
 
 ## Summary
@@ -79,6 +79,7 @@ https://pololu.github.io/a-star-32u4-arduino-library.  If you are already on tha
 
 ## Version history
 
+* 1.0.4 (2016 Apr 06): Fixed PrimeDemo and Keyboard examples so they can compile with the latest version of the Arduino IDE (1.6.8).
 * 1.0.3 (2015 Sep 15): Fixed PrimeDemo example to display >4GB SD card capacity correctly.
 * 1.0.2 (2015 Aug 31): Renamed Demo example to PrimeDemo and updated comments in examples.
 * 1.0.1 (2015 Aug 13): Corrected commented motor flip code in Motors example.
