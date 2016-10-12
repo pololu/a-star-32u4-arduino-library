@@ -2,6 +2,7 @@
 
 Version: 1.0.5<br/>
 Release date: 2016-10-12<br/>
+[![Build Status](https://travis-ci.org/pololu/a-star-32u4-arduino-library.svg?branch=master)](https://travis-ci.org/pololu/a-star-32u4-arduino-library)<br/>
 [www.pololu.com](http://www.pololu.com/)
 
 ## Summary
