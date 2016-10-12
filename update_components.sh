@@ -42,8 +42,8 @@ copylib()
 }
 
 library .
-copylib https://github.com/pololu/fastgpio-arduino ../fastgpio-arduino/FastGPIO FastGPIO.h
+copylib https://github.com/pololu/fastgpio-arduino ../fastgpio-arduino FastGPIO.h
 copylib https://github.com/pololu/pololu-buzzer-arduino ../pololu-buzzer-arduino/PololuBuzzer PololuBuzzer{.cpp,.h}
-copylib https://github.com/pololu/usb-pause-arduino ../usb-pause-arduino/USBPause USBPause.h
-copylib https://github.com/pololu/pololu-hd44780-arduino ../pololu-hd44780-arduino/PololuHD44780 PololuHD44780{.cpp,.h}
-copylib https://github.com/pololu/pushbutton-arduino ../pushbutton-arduino/Pushbutton Pushbutton{.cpp,.h}
+copylib https://github.com/pololu/usb-pause-arduino ../usb-pause-arduino USBPause.h
+copylib https://github.com/pololu/pololu-hd44780-arduino ../pololu-hd44780-arduino PololuHD44780{.cpp,.h}
+copylib https://github.com/pololu/pushbutton-arduino ../pushbutton-arduino Pushbutton{.cpp,.h}
