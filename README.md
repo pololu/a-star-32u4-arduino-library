@@ -1,7 +1,7 @@
 # AStar32U4 library
 
-Version: 1.0.5<br/>
-Release date: 2016-10-12<br/>
+Version: 1.1.0<br/>
+Release date: 2019-03-05<br/>
 [![Build Status](https://travis-ci.org/pololu/a-star-32u4-arduino-library.svg?branch=master)](https://travis-ci.org/pololu/a-star-32u4-arduino-library)<br/>
 [www.pololu.com](http://www.pololu.com/)
 
@@ -81,6 +81,7 @@ https://pololu.github.io/a-star-32u4-arduino-library.  If you are already on tha
 
 ## Version history
 
+* 1.1.0 (2019-03-05): Added `readBatteryMillivoltsLV4` and `readBatteryMillivoltsLV3` functions to support both A-Star 32U4 Prime LV (ac03e) and existing LV A-Stars. Deprecated `readBatteryMillivoltsLV`.
 * 1.0.5 (2016-10-12): Fixed a bug that caused the buzzer's `isPlaying` method to malfunction sometimes when link time optimization is enabled.
 * 1.0.4 (2016-04-06): Fixed PrimeDemo and Keyboard examples so they can compile with the latest version of the Arduino IDE (1.6.8).
 * 1.0.3 (2015-09-15): Fixed PrimeDemo example to display >4GB SD card capacity correctly.
