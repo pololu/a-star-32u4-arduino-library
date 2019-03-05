@@ -11,10 +11,8 @@ This example only works if A1 has been connected to BATLEV.
 Also, the power switch needs to be in the "On" position.
 
 This example assumes you are using the A-Star 32U4 Prime LV
-(the blue board) or A-Star 32U4 Robot Controller LV.  If you
-are using the A-Star 32U4 Prime SV instead, see the comment
-in the
-code below.
+(ac03e version, blue).  If you are using a different A-Star,
+see the comment in the code below.
 
 Note: This demo uses the standard A-Star 32U4 Prime LCD
 pins.  To avoid damage or improper operation, if you have
@@ -35,10 +33,21 @@ void loop()
   bool usbPower = usbPowerPresent();
 
   // This example assumes you are using the A-Star 32U4
-  // Prime LV (the blue board) or A-Star 32U4 Robot
-  // Controller LV.  If you are using the A-Star 32U4 Prime
-  // SV, change the "LV" in the line below to "SV".
-  uint16_t batteryLevel = readBatteryMillivoltsLV();
+  // Prime LV (ac03e version, blue).  If you are using
+  // a different A-Star, comment out the line below and
+  // uncomment the line that corresponds to your board.
+
+  // A-Star 32U4 Prime LV (ac03e)
+  uint16_t batteryLevel = readBatteryMillivoltsLV4();
+
+  // A-Star 32U4 Prime LV (ac03b)
+  // A-Star 32U4 Robot Controller LV
+  //uint16_t batteryLevel = readBatteryMillivoltsLV3();
+
+  // A-Star 32U4 Prime SV
+  // A-Star 32U4 Robot Controller SV
+  //uint16_t batteryLevel = readBatteryMillivoltsSV();
+
 
   // Print the results to the LCD.
   lcd.clear();

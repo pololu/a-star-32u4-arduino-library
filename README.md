@@ -51,7 +51,8 @@ The main classes and functions provided by the library are listed below:
 * ledGreen()
 * ledRed()
 * ledYellow()
-* readBatteryMillivoltsLV()
+* readBatteryMillivoltsLV4()
+* readBatteryMillivoltsLV3()
 * readBatteryMillivoltsSV()
 * usbPowerPresent()
 

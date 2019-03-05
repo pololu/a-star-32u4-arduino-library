@@ -62,21 +62,59 @@ inline bool usbPowerPresent()
     return USBSTA >> VBUS & 1;
 }
 
-/*! \brief Reads the battery voltage for an A-Star 32U4 Prime LV and returns it
-in millivolts.
+/*! \brief Reads the battery voltage for an A-Star 32U4 Prime LV (ac03e) and
+returns it in millivolts.
 
 This function performs an analog reading and uses it to compute the voltage on
-the A-Star 32U4 Prime LV's VIN pin in millivolts.  This only works if the
-specified pin (A1 by default) has been connected to BATLEV.
+the A-Star's VIN pin in millivolts.  This only works if the specified pin (A1 by
+default) has been connected to BATLEV.
 
-This function is only meant to be run on the A-Star 32U4 Prime LV (the blue
-board) and will give incorrect results on other versions.
+This function is only meant to be run on A-Stars with a 1/4 voltage divider:
+
+  - A-Star 32U4 Prime LV (ac03e) (blue board)
+
+It will give incorrect results on other versions.
 
 @param pin The pin number to read.  This argument is passed on to analogRead.
   The default value is `A1`.
 
-\sa readBatteryMillivoltsSV() */
-inline uint16_t readBatteryMillivoltsLV(uint8_t pin = A1)
+\sa readBatteryMillivoltsLV3(), readBatteryMillivoltsSV() */
+inline uint16_t readBatteryMillivoltsLV4(uint8_t pin = A1)
+{
+    const uint8_t sampleCount = 8;
+    uint16_t sum = 0;
+    for (uint8_t i = 0; i < sampleCount; i++)
+    {
+        sum += analogRead(pin);
+    }
+
+    // VBAT = 4 * millivolt reading = 4 * raw * 5000/1024
+    //      = raw * 625 / 32
+    // The correction number below makes it so that we round to the nearest
+    // whole number instead of always rounding down.
+    const uint16_t correction = 16 * sampleCount - 1;
+    return ((uint32_t)sum * 625 + correction) / (32 * sampleCount);
+}
+
+/*! \brief Reads the battery voltage for an A-Star 32U4 Prime LV (ac03b) or
+Robot Controller LV and returns it in millivolts.
+
+This function performs an analog reading and uses it to compute the voltage on
+the A-Star's VIN pin in millivolts.  This only works if the specified pin (A1 by
+default) has been connected to BATLEV.
+
+This function is only meant to be run on A-Stars with a 1/3 voltage divider:
+
+  - A-Star 32U4 Prime LV (ac03b) (blue board)
+  - A-Star 32U4 Robot Controller LV (blue board)
+
+It will give incorrect results on other versions.
+
+@param pin The pin number to read.  This argument is passed on to analogRead.
+  The default value is `A1`.
+
+\sa readBatteryMillivoltsLV4(), readBatteryMillivoltsSV() */
+inline uint16_t readBatteryMillivoltsLV3(uint8_t pin = A1)
 {
     const uint8_t sampleCount = 8;
     uint16_t sum = 0;
@@ -93,20 +131,24 @@ inline uint16_t readBatteryMillivoltsLV(uint8_t pin = A1)
     return ((uint32_t)sum * 1875 + correction) / (128 * sampleCount);
 }
 
-/*! \brief Reads the battery voltage for an A-Star 32U4 Prime SV and returns it
-in millivolts.
+/*! \brief Reads the battery voltage for an A-Star 32U4 Prime SV or Robot
+Controller SV and returns it in millivolts.
 
 This function performs an analog reading and uses it to compute the voltage on
 the A-Star 32U4 Prime SV's VIN pin in millivolts.  This only works if the
 specified pin (A1 by default) has been connected to BATLEV.
 
-This function is only meant to be run on the A-Star 32U4 Prime SV (the green
-board) and will give incorrect results on other versions.
+This function is only meant to be run on A-Stars with a 1/8 voltage divider:
+
+  - A-Star 32U4 Prime SV (green board)
+  - A-Star 32U4 Robot Controller SV (green board)
+
+It will give incorrect results on other versions.
 
 @param pin The pin number to read.  This argument is passed on to analogRead.
   The default value is `A1`.
 
-\sa readBatteryMillivoltsLV() */
+\sa readBatteryMillivoltsLV4(), readBatteryMillivoltsLV3() */
 inline uint16_t readBatteryMillivoltsSV(uint8_t pin = A1)
 {
     const uint8_t sampleCount = 8;
@@ -125,8 +167,17 @@ inline uint16_t readBatteryMillivoltsSV(uint8_t pin = A1)
 }
 
 /*! \deprecated This function is deprecated and is only here for backwards
-compatibility.  We recommend using readBatteryMillivoltsLV() instead. */
+compatibility.  We recommend using readBatteryMillivoltsLV4() or
+readBatteryMillivoltsLV3() instead. */
 inline uint16_t readBatteryMillivolts(uint8_t pin = A1)
 {
-    return readBatteryMillivoltsLV(pin);
+    return readBatteryMillivoltsLV3(pin);
+}
+
+/*! \deprecated This function is deprecated and is only here for backwards
+compatibility.  We recommend using readBatteryMillivoltsLV4() or
+readBatteryMillivoltsLV3() instead. */
+inline uint16_t readBatteryMillivoltsLV(uint8_t pin = A1)
+{
+    return readBatteryMillivoltsLV3(pin);
 }

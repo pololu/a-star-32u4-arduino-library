@@ -41,15 +41,19 @@ button A to work properly. */
 
 
 // This demo assumes you are using the A-Star 32U4 Prime LV
-// (the blue board).  If not, then comment out the line
-// below.
+// (ac03e version, blue).  If not, then comment out the line
+// "#define A_STAR_LV" below and uncomment the line that
+// corresponds to your board.
+
+// A-Star 32U4 Prime LV (ac03e)
 #define A_STAR_LV
 
-// Assume this will run on the A-Star 32U4 Prime SV (the
-// green board) if it is not running on the LV.
-#ifndef A_STAR_LV
-#define A_STAR_SV
-#endif
+// A-Star 32U4 Prime LV (ac03b)
+//#define A_STAR_LV_AC03B
+
+// A-Star 32U4 Prime SV
+//#define A_STAR_SV
+
 
 // This demo drives pin 4 low whenver the SD card is being
 // used.
@@ -358,7 +362,9 @@ void powerDemo()
       bool usbPower = usbPowerPresent();
 
 #if defined(A_STAR_LV)
-      uint16_t batteryLevel = readBatteryMillivoltsLV();
+      uint16_t batteryLevel = readBatteryMillivoltsLV4();
+#elif defined(A_STAR_LV_AC03B)
+      uint16_t batteryLevel = readBatteryMillivoltsLV3();
 #elif defined(A_STAR_SV)
       uint16_t batteryLevel = readBatteryMillivoltsSV();
 #else
@@ -570,7 +576,7 @@ void setup()
   lcd.clear();
   lcd.print(F(" A-Star"));
   lcd.gotoXY(0, 1);
-#if defined(A_STAR_LV)
+#if defined(A_STAR_LV) || defined(A_STAR_LV_AC03B)
   lcd.print(F("Prime LV"));
 #elif defined(A_STAR_SV)
   lcd.print(F("Prime SV"));
