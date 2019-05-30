@@ -9,6 +9,7 @@ cache:
 install:
 - pip install -U platformio
 - platformio lib install 891 # https://platformio.org/lib/show/891/Keyboard
+- platformio lib install 868 # https://platformio.org/lib/show/868/SD
 
 env:
 - BOARD=leonardo
