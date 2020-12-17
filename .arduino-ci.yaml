@@ -1,0 +1,5 @@
+only_boards:
+  - arduino:avr:leonardo
+library_archives:
+  - Keyboard=https://github.com/arduino-libraries/Keyboard/archive/1.0.2.tar.gz=1kjrdy6b0714361bh5bz0dx9i96gh99jc4qdh6kpz78b7zm754li
+  - SD=https://github.com/arduino-libraries/SD/archive/1.2.4.tar.gz=1hkmyrv1vqpk93r6l336ijrw1fk3fsvx63zghgkl4xyv0k80rjnh
