@@ -65,7 +65,7 @@ class AStar32U4Motors
      * \param m2Speed A number from -400 to 400 representing the speed and
      * direction of motor 2. Values of -400 or less result in full speed
      * reverse, and values of 400 or more result in full speed forward. */
-    static void setSpeeds(int16_t m2Speed, int16_t m1Speed);
+    static void setSpeeds(int16_t m1Speed, int16_t m2Speed);
 
   private:
 
